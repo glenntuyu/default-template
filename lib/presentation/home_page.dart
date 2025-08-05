@@ -1,3 +1,4 @@
+import 'package:default_template/presentation/qr_scan_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,10 +9,17 @@ class HomePage extends StatelessWidget {
   ];
 
   void _onFeatureTap(BuildContext context, String label) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Clicked: $label')),
-    );
-    // Navigate or handle feature tap here
+    if (label == 'Scan QR') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => QrScanPage()),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Clicked: $label')),
+      );
+      // Handle other features here
+    }
   }
 
   void _onSyncTap(BuildContext context) {
